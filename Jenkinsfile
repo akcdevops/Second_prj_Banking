@@ -59,8 +59,8 @@ pipeline{
         }
         stage('Push Artifact to Nexus'){
             steps {
-              nexusArtifactUploader artifacts: [[artifactId: 'banking', classifier: '', file: 'bankproject.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'com.project.staragile', nexusUrl: 'nexus.akcdevops.online', nexusVersion: 'nexus3', protocol: 'https', repository: 'bankproject', version: '0.0.1-SNAPSHOT'          
-                          }
+              nexusArtifactUploader artifacts: [[artifactId: 'banking', classifier: '', file: 'banking-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'com.project.staragile', nexusUrl: 'nexus.akcdevops.online', nexusVersion: 'nexus3', protocol: 'https', repository: 'bankproject', version: '0.0.1-SNAPSHOT'          
+            }
         }
         
     }
