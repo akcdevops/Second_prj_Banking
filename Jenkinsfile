@@ -65,6 +65,24 @@ pipeline{
                         
             }
         }
+        stage('Docker Build & Publish'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    script{ 
+                        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                            sh 'docker build -t ${IMAGE_NAME}:${VERSION} . '
+                            sh 'docker build -t ${DOCKER_HUB}/${IMAGE_NAME}:latest .'
+                            sh 'docker push ${DOCKER_HUB}/${IMAGE_NAME}:${VERSION} && docker push ${DOCKER_HUB}/${IMAGE_NAME}:latest'
+                            sh 'docker rmi ${DOCKER_HUB}/${IMAGE_NAME}:${VERSION} && docker rmi ${DOCKER_HUB}/${IMAGE_NAME}:latest'
+                            
+                            
+                        // } 
+                    }
+                }
+                
+            }
+
+        }
         
     }
 }
