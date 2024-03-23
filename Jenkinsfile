@@ -43,7 +43,13 @@ pipeline{
                 }
                   
             }
-
+        }
+        stage('Quality Check'){
+            steps{
+                timeout(time: 1,unit: 'minute') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
         }
     }
 }
