@@ -37,7 +37,7 @@ pipeline{
         stage('Code Analysis'){
             steps{
                 withSonarQubeEnv(credentialsId: 'sonarbanktoken') {
-                    mvn clean verify sonar:sonar -Dsonar.projectKey=bankproject
+                   sh ' mvn clean verify sonar:sonar'
                 }  
             }
 
