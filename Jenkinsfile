@@ -36,9 +36,12 @@ pipeline{
         }
         stage('Code Analysis'){
             steps{
-                withSonarQubeEnv(credentialsId: 'sonarbanktoken') {
-                   sh ' mvn clean verify sonar:sonar'
-                }  
+                script{
+                    withSonarQubeEnv(credentialsId: 'sonarbanktoken') {
+                     sh ' mvn clean verify sonar:sonar'
+                    }
+                }
+                  
             }
 
         }
