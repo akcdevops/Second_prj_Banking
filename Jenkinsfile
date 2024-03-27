@@ -60,7 +60,7 @@ pipeline{
         stage('Push Artifact to Nexus'){
             steps {
                 dir('/var/lib/jenkins/workspace/Bankins_project/target'){
-                    nexusArtifactUploader artifacts: [[artifactId: 'banking', classifier: '', file: 'banking-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'com.project.staragile', nexusUrl: '68.183.85.110:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'bankproject', version: '0.0.1-SNAPSHOT'
+                    nexusArtifactUploader artifacts: [[artifactId: 'banking', classifier: '', file: 'banking-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'com.project.staragile', nexusUrl: '143.110.190.60:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'bankproject', version: '0.0.1-SNAPSHOT'
                 }
                         
             }
